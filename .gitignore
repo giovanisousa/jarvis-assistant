@@ -1,0 +1,15 @@
+# Ignorar ambiente virtual
+venv/
+__pycache__/
+
+# Ignorar arquivos de ambiente (SENHAS)
+.env
+.env.local
+
+# Ignorar arquivos do sistema e IDE
+.vscode/
+*.log
+
+db_projetos.json
+db_memoria.json
+*.pyc
