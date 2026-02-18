@@ -1,0 +1,48 @@
+# JARVIS V2 - Dependências do Projeto
+
+# === Síntese e Reconhecimento de Voz ===
+pyttsx3>=2.90
+SpeechRecognition>=3.10.0
+pyaudio>=0.2.13  # Necessário para microfone (pode precisar de instalação manual no Windows)
+
+# === Automação de Interface ===
+keyboard>=0.13.5
+pyautogui>=0.9.54
+Pillow>=10.0.0  # Dependência do pyautogui para screenshots
+
+# === IA e APIs ===
+google-generativeai>=0.3.0
+requests>=2.31.0
+
+# === Configuração ===
+python-dotenv>=1.0.0
+
+# === Email ===
+# Bibliotecas padrão do Python (já incluídas):
+# - smtplib
+# - imaplib
+# - email
+
+# === Utilidades ===
+# Bibliotecas padrão do Python (já incluídas):
+# - json
+# - os
+# - time
+# - datetime
+# - re
+
+# === NOTAS DE INSTALAÇÃO ===
+#
+# WINDOWS:
+# Se houver erro com pyaudio, baixe o wheel de:
+# https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio
+# Depois instale: pip install PyAudio-0.2.13-cpXX-cpXXm-win_amd64.whl
+#
+# LINUX/MAC:
+# sudo apt-get install portaudio19-dev python3-pyaudio  # Ubuntu/Debian
+# brew install portaudio  # macOS
+# pip install pyaudio
+#
+# PERMISSÕES:
+# O keyboard pode precisar de permissões elevadas em alguns sistemas.
+# Execute como administrador/sudo se necessário (não recomendado para produção).
