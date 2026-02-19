@@ -14,7 +14,7 @@ from config import Config
 # Segurança do Mouse
 pyautogui.FAILSAFE = True
 
-class JarvisFerramentas:
+class ApexFerramentas:
     def __init__(self):
         self.email_user = Config.GMAIL_USER
         self.email_pass = Config.GMAIL_PASS
@@ -34,10 +34,10 @@ class JarvisFerramentas:
         print(f"   📧 [Ferramenta] Enviando para {destinatario}...")
         
         msg = MIMEMultipart()
-        msg['From'] = f"Jarvis <{self.email_user}>"
+        msg['From'] = f"Apex <{self.email_user}>"
         msg['To'] = destinatario
         msg['Subject'] = assunto
-        corpo_final = f"{corpo_html}<br><br><small>Enviado por Jarvis Assistant - Animati</small>"
+        corpo_final = f"{corpo_html}<br><br><small>Enviado por Apex Assistant - Animati</small>"
         msg.attach(MIMEText(corpo_final, 'html'))
 
         try:
@@ -221,7 +221,7 @@ class JarvisFerramentas:
 
 # --- TESTE RÁPIDO ---
 if __name__ == "__main__":
-    tools = JarvisFerramentas()
+    tools = ApexFerramentas()
     
     # Teste: Buscar e-mails com a palavra "Suporte" no assunto
     # Mude "Suporte" para algo que você sabe que tem na sua caixa agora

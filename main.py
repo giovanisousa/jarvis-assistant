@@ -1,12 +1,12 @@
 import time
 import re
 import keyboard
-from voz import JarvisVoz
-from brain_v2 import JarvisBrain
+from voz import ApexVoz
+from brain_v2 import ApexBrain
 
 # Configuração de Tempo
 SESSAO_TIMEOUT = 60  # 1 minuto de timeout (aumentado)
-MODO_CONTINUO = True  # Se True, não precisa dizer "Jarvis" após ativar
+MODO_CONTINUO = True  # Se True, não precisa dizer "Apex" após ativar
 
 def limpar_texto_para_fala(texto):
     """Remove formatação Markdown/HTML para leitura fluida"""
@@ -22,18 +22,18 @@ def limpar_texto_para_fala(texto):
 
 def iniciar_assistente():
     print("="*60)
-    print("   🤖 JARVIS - ASSISTENTE EXECUTIVO INTELIGENTE")
+    print("   🤖 APEX - ASSISTENTE EXECUTIVO INTELIGENTE")
     print("="*60)
     print(f"   ⚡ Modo: {'CONTÍNUO' if MODO_CONTINUO else 'WAKE WORD'}")
     print(f"   ⏱️  Timeout de sessão: {SESSAO_TIMEOUT}s")
-    print("   🎤 Diga 'JARVIS' para ativar")
+    print("   🎤 Diga 'APEX' para ativar")
     print("   ⌨️  Aperte ESPAÇO para interromper a fala")
     print("   🛑 Diga 'SAIR' ou 'DESLIGAR' para encerrar")
     print("   🧹 Diga 'LIMPAR HISTÓRICO' para resetar a conversa")
     print("="*60)
 
     try:
-        brain = JarvisBrain()
+        brain = ApexBrain()
     except Exception as e:
         print(f"❌ Erro crítico no cérebro: {e}")
         return
@@ -44,7 +44,7 @@ def iniciar_assistente():
     
     # Mensagem inicial
     try:
-        voz_temp = JarvisVoz()
+        voz_temp = ApexVoz()
         voz_temp.falar("Sistemas online. Estou pronto, senhor.")
         del voz_temp
     except Exception as e:
@@ -58,7 +58,7 @@ def iniciar_assistente():
         if sessao_ativa and tempo_sem_falar > SESSAO_TIMEOUT:
             sessao_ativa = False
             print(f"\n💤 Sessão expirada após {SESSAO_TIMEOUT}s de inatividade.")
-            print("   Diga 'Jarvis' novamente para reativar.\n")
+            print("   Diga 'Apex' novamente para reativar.\n")
 
         # Indicador Visual de Status
         if sessao_ativa:
@@ -66,13 +66,13 @@ def iniciar_assistente():
             status_msg = f" [Sessão ativa - {int(SESSAO_TIMEOUT - tempo_sem_falar)}s restantes]"
         else:
             status_icone = "💤 STANDBY"
-            status_msg = " [Aguardando 'Jarvis'...]"
+            status_msg = " [Aguardando 'Apex'...]"
         
         print(f"\n{status_icone}{status_msg}")
         print("🎤 Ouvindo... ", end="", flush=True)
 
         # 1. CAPTURA DE VOZ
-        voz_ouvir = JarvisVoz()
+        voz_ouvir = ApexVoz()
         comando_usuario = voz_ouvir.ouvir()
         del voz_ouvir 
         
@@ -86,23 +86,23 @@ def iniciar_assistente():
         
         # Se sessão NÃO está ativa, precisa da palavra mágica
         if not sessao_ativa:
-            if "jarvis" in comando_lower:
-                print("   ⚡ JARVIS ATIVADO!")
+            if "apex" in comando_lower:
+                print("   ⚡ APEX ATIVADO!")
                 sessao_ativa = True
                 ultimo_comando_time = time.time()
                 
-                # Remove "jarvis" do comando para processar o resto
-                comando_processado = comando_lower.replace("jarvis", "").strip()
+                # Remove "apex" do comando para processar o resto
+                comando_processado = comando_lower.replace("apex", "").strip()
                 comando_processado = comando_processado.replace(",", "").strip()
                 
-                # Se ele disse SÓ "Jarvis", pergunta o que quer
+                # Se ele disse SÓ "Apex", pergunta o que quer
                 if len(comando_processado) < 3:
-                    voz_resp = JarvisVoz()
+                    voz_resp = ApexVoz()
                     voz_resp.falar("Sim, senhor? Como posso ajudar?")
                     del voz_resp
                     continue
                 
-                # Se disse "Jarvis + comando", processa o comando
+                # Se disse "Apex + comando", processa o comando
                 comando_usuario = comando_processado
             else:
                 # Ignora comandos sem wake word
@@ -114,23 +114,23 @@ def iniciar_assistente():
                 # No modo contínuo, renova o timer a cada interação
                 ultimo_comando_time = time.time()
             else:
-                # No modo wake word, verifica se disse "jarvis" de novo
-                if "jarvis" not in comando_lower:
-                    print("   ⏭️  Ignorado (modo wake word - diga 'Jarvis' antes)")
+                # No modo wake word, verifica se disse "apex" de novo
+                if "apex" not in comando_lower:
+                    print("   ⏭️  Ignorado (modo wake word - diga 'Apex' antes)")
                     continue
                 ultimo_comando_time = time.time()
-                comando_usuario = comando_lower.replace("jarvis", "").replace(",", "").strip()
+                comando_usuario = comando_lower.replace("apex", "").replace(",", "").strip()
 
         # --- COMANDOS DE SISTEMA ---
         if any(w in comando_lower for w in ["sair", "desligar", "encerrar", "tchau"]):
-            voz_tchau = JarvisVoz()
+            voz_tchau = ApexVoz()
             voz_tchau.falar("Desligando sistemas. Até logo, senhor.")
             del voz_tchau
             break
 
         if "limpar histórico" in comando_lower or "limpa histórico" in comando_lower:
             brain.limpar_historico()
-            voz_limpar = JarvisVoz()
+            voz_limpar = ApexVoz()
             voz_limpar.falar("Histórico de conversa limpo. Começando do zero.")
             del voz_limpar
             continue
@@ -143,7 +143,7 @@ def iniciar_assistente():
             
             # Exibir resposta no terminal
             print(f"\n{'='*60}")
-            print(f"🤖 JARVIS:\n{resposta_texto}")
+            print(f"🤖 APEX:\n{resposta_texto}")
             print(f"{'='*60}\n")
             
             # Preparar texto para fala
@@ -152,12 +152,12 @@ def iniciar_assistente():
             # Verificar se a resposta é muito curta (confirmações)
             if len(texto_falado.split()) <= 3:
                 # Respostas curtas: fala direto
-                voz_falar = JarvisVoz()
+                voz_falar = ApexVoz()
                 voz_falar.falar(texto_falado)
                 del voz_falar
             else:
                 # Respostas longas: permite interrupção
-                voz_falar = JarvisVoz()
+                voz_falar = ApexVoz()
                 
                 # Divide em frases
                 frases = re.split(r'(?<=[.!?])\s+', texto_falado)
@@ -188,14 +188,14 @@ def iniciar_assistente():
 
         except KeyboardInterrupt:
             print("\n\n⚠️ Interrompido pelo usuário (Ctrl+C)")
-            voz_inter = JarvisVoz()
+            voz_inter = ApexVoz()
             voz_inter.falar("Operação interrompida.")
             del voz_inter
             sessao_ativa = False
             
         except Exception as e:
             print(f"❌ Erro: {e}")
-            voz_erro = JarvisVoz()
+            voz_erro = ApexVoz()
             voz_erro.falar("Desculpe, ocorreu um erro. Por favor, tente novamente.")
             del voz_erro
 
@@ -204,7 +204,7 @@ def main():
     try:
         iniciar_assistente()
     except KeyboardInterrupt:
-        print("\n\n👋 Encerrando JARVIS...")
+        print("\n\n👋 Encerrando APEX...")
     except Exception as e:
         print(f"\n❌ Erro fatal: {e}")
         print("   Verifique as configurações e tente novamente.")

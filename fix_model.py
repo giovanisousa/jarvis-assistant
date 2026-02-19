@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script para corrigir modelo Gemini nos arquivos do Jarvis
+Script para corrigir modelo Gemini nos arquivos do Apex
 Lista modelos disponíveis e atualiza automaticamente
 """
 
@@ -72,7 +72,7 @@ def corrigir_arquivo(caminho, modelo_antigo, modelo_novo):
 
 def main():
     print("="*70)
-    print("🔧 CORREÇÃO DE MODELO GEMINI - JARVIS")
+    print("🔧 CORREÇÃO DE MODELO GEMINI - APEX")
     print("="*70)
     print()
     
@@ -140,7 +140,7 @@ def main():
         for arq in corrigidos:
             print(f"  • {arq}")
         print()
-        print("✅ Agora você pode executar o Jarvis normalmente!")
+        print("✅ Agora você pode executar o Apex normalmente!")
         print()
         print("Comandos:")
         print("  streamlit run app_v2.py")

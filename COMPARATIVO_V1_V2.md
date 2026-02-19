@@ -1,4 +1,4 @@
-# 🔄 COMPARATIVO: JARVIS V1 vs V2
+# 🔄 COMPARATIVO: APEX V1 vs V2
 
 ## Exemplos Práticos de Conversação
 
@@ -8,11 +8,11 @@
 
 #### ❌ **VERSÃO 1 (Original)**
 ```
-VOCÊ: "Jarvis"
-JARVIS: "Sim?"
+VOCÊ: "Apex"
+APEX: "Sim?"
 
-VOCÊ: "Jarvis, qual a situação do projeto Rivelare?"
-JARVIS: "O projeto 1236 - Rivelare Diagnóstico Médico está em 44% de conclusão.
+VOCÊ: "Apex, qual a situação do projeto Rivelare?"
+APEX: "O projeto 1236 - Rivelare Diagnóstico Médico está em 44% de conclusão.
          Fase atual: Implantação. Tarefas pendentes:
          - Configurar servidor PACS (vence em 15/02)
          - Migração de base de dados (vence em 18/02)
@@ -22,15 +22,15 @@ JARVIS: "O projeto 1236 - Rivelare Diagnóstico Médico está em 44% de conclus�
 VOCÊ: "E o cronograma?"
 [SEM RESPOSTA - timeout]
 
-VOCÊ: "Jarvis"
-JARVIS: "Sim?"
+VOCÊ: "Apex"
+APEX: "Sim?"
 
 VOCÊ: "E o cronograma do Rivelare?"
-JARVIS: "O projeto 1236 - Rivelare Diagnóstico Médico está previsto para..."
+APEX: "O projeto 1236 - Rivelare Diagnóstico Médico está previsto para..."
 ```
 
 **❌ Problemas:**
-- Precisa dizer "Jarvis" a cada comando
+- Precisa dizer "Apex" a cada comando
 - Não lembra contexto anterior
 - Repete informações já ditas
 - Sessão expira rápido (30s)
@@ -38,23 +38,23 @@ JARVIS: "O projeto 1236 - Rivelare Diagnóstico Médico está previsto para..."
 
 #### ✅ **VERSÃO 2 (Melhorada)**
 ```
-VOCÊ: "Jarvis"
-JARVIS: "Sim, senhor? Como posso ajudar?"
+VOCÊ: "Apex"
+APEX: "Sim, senhor? Como posso ajudar?"
 
 VOCÊ: "Qual a situação do Rivelare?"
-JARVIS: "Rivelare está em 44%, fase de Implantação. 
+APEX: "Rivelare está em 44%, fase de Implantação. 
          O gargalo é a configuração do servidor PACS que vence amanhã."
 
 VOCÊ: "E o cronograma?"
-JARVIS: "Para o Rivelare, temos 15 dias até a virada. Dentro do prazo."
+APEX: "Para o Rivelare, temos 15 dias até a virada. Dentro do prazo."
 
 VOCÊ: "Me fala mais sobre as pendências"
-JARVIS: "Além do servidor, temos migração de dados (18/02) e treinamento 
+APEX: "Além do servidor, temos migração de dados (18/02) e treinamento 
          da equipe (20/02). Nada crítico ainda."
 ```
 
 **✅ Melhorias:**
-- Modo contínuo: não precisa repetir "Jarvis"
+- Modo contínuo: não precisa repetir "Apex"
 - Lembra contexto: "E o cronograma?" = sabe que é do Rivelare
 - Respostas mais concisas e naturais
 - Sessão de 60s (configurável)
@@ -65,15 +65,15 @@ JARVIS: "Além do servidor, temos migração de dados (18/02) e treinamento
 
 #### ❌ **VERSÃO 1**
 ```
-VOCÊ: "Jarvis, verifica se tem email sobre passagem OA"
-JARVIS: [retorna JSON bruto ou erro]
+VOCÊ: "Apex, verifica se tem email sobre passagem OA"
+APEX: [retorna JSON bruto ou erro]
 
-VOCÊ: "Jarvis, manda email pro João"
-JARVIS: [retorna JSON] 
+VOCÊ: "Apex, manda email pro João"
+APEX: [retorna JSON] 
         "Preciso de mais informações: assunto e conteúdo do email"
 
-VOCÊ: "Jarvis, o assunto é Atualização do Projeto"
-JARVIS: "Qual projeto?"
+VOCÊ: "Apex, o assunto é Atualização do Projeto"
+APEX: "Qual projeto?"
 ```
 
 **❌ Problemas:**
@@ -84,17 +84,17 @@ JARVIS: "Qual projeto?"
 
 #### ✅ **VERSÃO 2**
 ```
-VOCÊ: "Jarvis, verifica se tem email sobre passagem OA"
-JARVIS: "Tenho 2 emails não lidos:
+VOCÊ: "Apex, verifica se tem email sobre passagem OA"
+APEX: "Tenho 2 emails não lidos:
          1. De maria@animati.com: 'Pendência Passagem OA - Cliente Rivelare'
          2. De suporte@zoho.com: 'Atualização automática do sistema'"
 
 VOCÊ: "Responde pra Maria que vou resolver hoje"
-JARVIS: ✅ Email enviado para maria@animati.com
+APEX: ✅ Email enviado para maria@animati.com
          Assunto: Re: Pendência Passagem OA - Cliente Rivelare
 
 VOCÊ: "E anota no projeto Rivelare que tem essa pendência"
-JARVIS: ✅ Anotado no projeto 1236.
+APEX: ✅ Anotado no projeto 1236.
 ```
 
 **✅ Melhorias:**
@@ -108,18 +108,18 @@ JARVIS: ✅ Anotado no projeto 1236.
 
 #### ❌ **VERSÃO 1**
 ```
-VOCÊ: "Jarvis, quais projetos estão atrasados?"
-JARVIS: "Projeto 1236 - Rivelare: 44%
+VOCÊ: "Apex, quais projetos estão atrasados?"
+APEX: "Projeto 1236 - Rivelare: 44%
          Projeto 1237 - Futuro: 10%
          Projeto 1243 - Radi-Imagem: 1%
          [lista completa de 15 projetos...]"
 
-VOCÊ: "Jarvis, me fala mais sobre o Futuro"
-JARVIS: "Projeto 1237 - Futuro está em 10%..."
+VOCÊ: "Apex, me fala mais sobre o Futuro"
+APEX: "Projeto 1237 - Futuro está em 10%..."
          [repete tudo de novo]
 
-VOCÊ: "Jarvis, e o Radi-Imagem?"
-JARVIS: "Projeto 1243 está em 1%..."
+VOCÊ: "Apex, e o Radi-Imagem?"
+APEX: "Projeto 1243 está em 1%..."
          [repete tudo de novo]
 ```
 
@@ -131,21 +131,21 @@ JARVIS: "Projeto 1243 está em 1%..."
 
 #### ✅ **VERSÃO 2**
 ```
-VOCÊ: "Jarvis, quais projetos estão mais atrasados?"
-JARVIS: "3 projetos críticos:
+VOCÊ: "Apex, quais projetos estão mais atrasados?"
+APEX: "3 projetos críticos:
          - Radi-Imagem (1%): travado na DEIP
          - Futuro (10%): aguardando infra do cliente
          - Rivelare (44%): gargalo no servidor PACS"
 
 VOCÊ: "Me fala mais do Futuro"
-JARVIS: "Futuro está parado há 2 semanas. O cliente ainda não liberou 
+APEX: "Futuro está parado há 2 semanas. O cliente ainda não liberou 
          acesso à infraestrutura. Já cobrei por email em 10/02."
 
 VOCÊ: "Manda um lembrete pra eles"
-JARVIS: ✅ Email de cobrança enviado para contato do projeto Futuro.
+APEX: ✅ Email de cobrança enviado para contato do projeto Futuro.
 
 VOCÊ: "E o Radi-Imagem?"
-JARVIS: "Travado há 1 mês. Falta documentação DEIP do cliente."
+APEX: "Travado há 1 mês. Falta documentação DEIP do cliente."
 ```
 
 **✅ Melhorias:**
@@ -159,18 +159,18 @@ JARVIS: "Travado há 1 mês. Falta documentação DEIP do cliente."
 
 #### ❌ **VERSÃO 1**
 ```
-VOCÊ: "Jarvis, anote que o cliente está insatisfeito"
-JARVIS: "Qual projeto?"
+VOCÊ: "Apex, anote que o cliente está insatisfeito"
+APEX: "Qual projeto?"
 
-VOCÊ: "Jarvis, o Rivelare"
-JARVIS: "O que deseja anotar?"
+VOCÊ: "Apex, o Rivelare"
+APEX: "O que deseja anotar?"
 
-VOCÊ: "Jarvis, que o cliente está insatisfeito com os prazos"
-JARVIS: ✅ Anotado.
+VOCÊ: "Apex, que o cliente está insatisfeito com os prazos"
+APEX: ✅ Anotado.
 
 [Depois, em outra sessão:]
-VOCÊ: "Jarvis, qual a situação do Rivelare?"
-JARVIS: "44% de conclusão, fase Implantação."
+VOCÊ: "Apex, qual a situação do Rivelare?"
+APEX: "44% de conclusão, fase Implantação."
 [NÃO menciona a insatisfação do cliente]
 ```
 
@@ -181,18 +181,18 @@ JARVIS: "44% de conclusão, fase Implantação."
 
 #### ✅ **VERSÃO 2**
 ```
-VOCÊ: "Jarvis, o cliente do Rivelare está insatisfeito com os prazos"
-JARVIS: ✅ Anotado no projeto Rivelare.
+VOCÊ: "Apex, o cliente do Rivelare está insatisfeito com os prazos"
+APEX: ✅ Anotado no projeto Rivelare.
 
 [5 minutos depois, mesma sessão:]
 VOCÊ: "Qual a situação do Rivelare?"
-JARVIS: "44%, implantação. Ponto de atenção: você mencionou há pouco 
+APEX: "44%, implantação. Ponto de atenção: você mencionou há pouco 
          que o cliente está insatisfeito com prazos. Sugiro priorizar 
          o servidor PACS que vence amanhã."
 
 [Dia seguinte, nova sessão:]
-VOCÊ: "Jarvis, fala do Rivelare"
-JARVIS: "44%, fase implantação. Gargalo: servidor PACS.
+VOCÊ: "Apex, fala do Rivelare"
+APEX: "44%, fase implantação. Gargalo: servidor PACS.
          ⚠️ Nota anterior: cliente insatisfeito com prazos."
 ```
 
@@ -207,15 +207,15 @@ JARVIS: "44%, fase implantação. Gargalo: servidor PACS.
 
 #### ❌ **VERSÃO 1**
 ```
-VOCÊ: "Jarvis, avisa a Patricia que terminei o projeto"
-JARVIS: [retorna erro ou JSON]
+VOCÊ: "Apex, avisa a Patricia que terminei o projeto"
+APEX: [retorna erro ou JSON]
         "Função enviar_whatsapp não reconhecida"
 
-VOCÊ: "Jarvis, manda mensagem no whatsapp pra Patricia"
-JARVIS: "Qual mensagem?"
+VOCÊ: "Apex, manda mensagem no whatsapp pra Patricia"
+APEX: "Qual mensagem?"
 
-VOCÊ: "Jarvis, que eu terminei o projeto Rivelare"
-JARVIS: [tenta executar mas usa nome errado]
+VOCÊ: "Apex, que eu terminei o projeto Rivelare"
+APEX: [tenta executar mas usa nome errado]
         ❌ Contato 'Pat' não encontrado
 ```
 
@@ -227,11 +227,11 @@ JARVIS: [tenta executar mas usa nome errado]
 
 #### ✅ **VERSÃO 2**
 ```
-VOCÊ: "Jarvis, avisa a Patricia que terminei o projeto Rivelare"
-JARVIS: ✅ Mensagem enviada para Patricia via WhatsApp.
+VOCÊ: "Apex, avisa a Patricia que terminei o projeto Rivelare"
+APEX: ✅ Mensagem enviada para Patricia via WhatsApp.
 
 [Na tela do WhatsApp:]
-"Olá Patricia, o projeto Rivelare foi finalizado. Att, Giovani (via Jarvis)"
+"Olá Patricia, o projeto Rivelare foi finalizado. Att, Giovani (via Apex)"
 ```
 
 **✅ Melhorias:**
@@ -245,8 +245,8 @@ JARVIS: ✅ Mensagem enviada para Patricia via WhatsApp.
 
 #### ❌ **VERSÃO 1**
 ```
-VOCÊ: "Jarvis, quantos projetos estão em implantação?"
-JARVIS: "15 projetos:
+VOCÊ: "Apex, quantos projetos estão em implantação?"
+APEX: "15 projetos:
          - Projeto 1236: Rivelare (44%)
          - Projeto 1237: Futuro (10%)
          - Projeto 1243: Radi-Imagem (1%)
@@ -259,14 +259,14 @@ JARVIS: "15 projetos:
 
 #### ✅ **VERSÃO 2**
 ```
-VOCÊ: "Jarvis, quantos projetos estão em implantação?"
-JARVIS: "8 projetos em implantação. Os 3 com maior avanço:
+VOCÊ: "Apex, quantos projetos estão em implantação?"
+APEX: "8 projetos em implantação. Os 3 com maior avanço:
          - Hospital Carazinho (70%)
          - Viva Mais (69%)
          - Gineco em Imagem (68%)"
 
 VOCÊ: "E em infra?"
-JARVIS: "5 projetos em infra. Mais crítico: Futuro (10%), parado há 2 semanas."
+APEX: "5 projetos em infra. Mais crítico: Futuro (10%), parado há 2 semanas."
 ```
 
 **✅ Melhorias:**
@@ -294,9 +294,9 @@ JARVIS: "5 projetos em infra. Mais crítico: Futuro (10%), parado há 2 semanas.
 
 ## 🎯 CONCLUSÃO
 
-A **Versão 2** transforma o Jarvis de um assistente **reativo e fragmentado** 
+A **Versão 2** transforma o Apex de um assistente **reativo e fragmentado** 
 em um verdadeiro **assistente conversacional inteligente**, muito mais próximo 
-do Jarvis do filme Homem de Ferro.
+do Apex do filme Homem de Ferro.
 
 ### **Principais Ganhos:**
 1. 🧠 **Memória**: Lembra contexto, não repete informações

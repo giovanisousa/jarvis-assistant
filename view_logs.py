@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Visualizador de Logs do Jarvis
+Visualizador de Logs do Apex
 Ferramenta para analisar e debugar erros
 """
 
@@ -25,14 +25,14 @@ class LogViewer:
     def exibir_menu(self):
         """Exibe menu interativo"""
         print("="*70)
-        print("🔍 VISUALIZADOR DE LOGS - JARVIS")
+        print("🔍 VISUALIZADOR DE LOGS - APEX")
         print("="*70)
         
         arquivos = self.listar_arquivos_log()
         
         if not arquivos:
             print("\n❌ Nenhum arquivo de log encontrado!")
-            print("Execute o Jarvis primeiro para gerar logs.\n")
+            print("Execute o Apex primeiro para gerar logs.\n")
             return
         
         print("\nArquivos disponíveis:\n")
@@ -127,11 +127,11 @@ class LogViewer:
     def ver_log_hoje(self):
         """Mostra log do dia atual"""
         hoje = datetime.now().strftime("%Y-%m-%d")
-        arquivo = self.pasta_logs / f"jarvis_{hoje}.log"
+        arquivo = self.pasta_logs / f"apex_{hoje}.log"
         
         if not arquivo.exists():
             print(f"\n❌ Log de hoje ({hoje}) não encontrado.")
-            print("O Jarvis ainda não foi executado hoje.\n")
+            print("O Apex ainda não foi executado hoje.\n")
             return
         
         self.ver_arquivo(arquivo)
@@ -201,7 +201,7 @@ class LogViewer:
         data_limite = datetime.now() - timedelta(days=7)
         removidos = 0
         
-        for arquivo in self.pasta_logs.glob("jarvis_*.log"):
+        for arquivo in self.pasta_logs.glob("apex_*.log"):
             try:
                 nome = arquivo.stem
                 data_str = nome.split("_")[1]

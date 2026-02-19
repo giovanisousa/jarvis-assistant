@@ -5,9 +5,9 @@ from google import genai
 from google.genai import types
 from config import Config
 from datetime import datetime
-from ferramentas import JarvisFerramentas  # <--- NOVA IMPORTAÇÃO
+from ferramentas import ApexFerramentas  # <--- NOVA IMPORTAÇÃO
 
-class JarvisBrain:
+class ApexBrain:
     def __init__(self):
         if not Config.GEMINI_KEY:
             raise ValueError("❌ Chave do Gemini não encontrada no arquivo .env!")
@@ -22,13 +22,13 @@ class JarvisBrain:
         self.memoria_local = self.carregar_memoria_local()
         
         # Inicializa os "Braços"
-        self.ferramentas = JarvisFerramentas() # <--- INICIALIZAÇÃO DOS BRAÇOS
+        self.ferramentas = ApexFerramentas() # <--- INICIALIZAÇÃO DOS BRAÇOS
         
         data_hoje = datetime.now().strftime("%d/%m/%Y")
 
         # --- INSTRUÇÃO DE SISTEMA HÍBRIDA (GP + OPERADOR) ---
         self.instrucao_sistema = (
-            f"Você é o Jarvis, assistente executivo da Animati. Hoje é {data_hoje}. "
+            f"Você é o Apex, assistente executivo da Animati. Hoje é {data_hoje}. "
             "Seu gestor é o Giovani. "
             "FONTE DE DADOS: Zoho Projects (Técnico) + Memória do Gestor (Contexto).\n\n"
             
@@ -124,7 +124,7 @@ class JarvisBrain:
                 if num in proj.get("name", ""):
                     return [proj], None, modo_escrita
 
-        palavras_ignoradas = ['anote', 'que', 'sobre', 'projeto', 'no', 'na', 'o', 'a', 'para', 'fase', 'status', 'jarvis', 'situacao', 'situação', 'clique', 'mande', 'leia']
+        palavras_ignoradas = ['anote', 'que', 'sobre', 'projeto', 'no', 'na', 'o', 'a', 'para', 'fase', 'status', 'apex', 'situacao', 'situação', 'clique', 'mande', 'leia']
         termos = [p for p in pergunta_limpa.split() if len(p) > 3 and p not in palavras_ignoradas]
         
         projetos_encontrados = []

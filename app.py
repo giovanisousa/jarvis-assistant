@@ -3,12 +3,12 @@ import json
 import os
 import pandas as pd
 import plotly.express as px
-from brain import JarvisBrain
-from voz import JarvisVoz
+from brain import ApexBrain
+from voz import ApexVoz
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Jarvis Dashboard - Animati",
+    page_title="Apex Dashboard - Animati",
     page_icon="🤖",
     layout="wide",
 )
@@ -50,12 +50,12 @@ def carregar_dados_reais():
             return []
     return []
 
-# --- INTERFACE DO JARVIS ---
-def acionar_jarvis():
-    voz = JarvisVoz()
-    brain = JarvisBrain()
+# --- INTERFACE DO APEX ---
+def acionar_apex():
+    voz = ApexVoz()
+    brain = ApexBrain()
     with st.sidebar:
-        with st.spinner('⚡ Jarvis está a ouvir...'):
+        with st.spinner('⚡ Apex está a ouvir...'):
             comando = voz.ouvir()
             if comando:
                 st.session_state['cmd'] = comando
@@ -103,18 +103,18 @@ else:
 # --- BARRA LATERAL FUTURISTA ---
 with st.sidebar:
     # Imagem local do Robô
-    if os.path.exists("assets/robo_jarvis.png"):
-        st.image("assets/robo_jarvis.png", width=220)
+    if os.path.exists("assets/robo_apex.png"):
+        st.image("assets/robo_apex.png", width=220)
     
-    st.markdown('<h2 style="text-align:center;">JARVIS CORE</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 style="text-align:center;">APEX CORE</h2>', unsafe_allow_html=True)
     st.markdown("---")
     
-    if st.button("🎙️ INICIAR COMANDO", use_container_width=True):
-        acionar_jarvis()
+    if st.button("🎙️ INICIAR COMANDO", width="stretch"):
+        acionar_apex()
     
     if 'cmd' in st.session_state:
         st.caption("Última entrada:")
         st.info(st.session_state['cmd'])
     if 'resp' in st.session_state:
-        st.caption("Resposta Jarvis:")
+        st.caption("Resposta Apex:")
         st.markdown(st.session_state['resp'], unsafe_allow_html=True)

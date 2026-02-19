@@ -1,4 +1,4 @@
-# JARVIS V2 - Dependências do Projeto
+# APEX V2 - Dependências do Projeto
 
 # === Síntese e Reconhecimento de Voz ===
 pyttsx3>=2.90

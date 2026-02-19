@@ -1,5 +1,5 @@
 """
-Sistema de Logging Centralizado do Jarvis
+Sistema de Logging Centralizado do Apex
 Captura todos os erros e eventos do sistema
 """
 
@@ -8,10 +8,10 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-class JarvisLogger:
-    """Gerenciador de logs do sistema Jarvis"""
+class ApexLogger:
+    """Gerenciador de logs do sistema Apex"""
     
-    def __init__(self, nome_modulo="jarvis"):
+    def __init__(self, nome_modulo="apex"):
         self.nome_modulo = nome_modulo
         
         # Cria pasta de logs se não existir
@@ -20,7 +20,7 @@ class JarvisLogger:
         
         # Define nomes dos arquivos de log
         data_hoje = datetime.now().strftime("%Y-%m-%d")
-        self.arquivo_geral = self.pasta_logs / f"jarvis_{data_hoje}.log"
+        self.arquivo_geral = self.pasta_logs / f"apex_{data_hoje}.log"
         self.arquivo_erros = self.pasta_logs / "erros.log"
         self.arquivo_acoes = self.pasta_logs / "acoes.log"
         
@@ -94,7 +94,7 @@ class JarvisLogger:
             self.logger.critical(mensagem)
     
     def registrar_acao(self, tipo_acao, detalhes):
-        """Registra ações executadas pelo Jarvis"""
+        """Registra ações executadas pelo Apex"""
         with open(self.arquivo_acoes, 'a', encoding='utf-8') as f:
             timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             f.write(f"{timestamp} | {tipo_acao} | {detalhes}\n")
@@ -112,10 +112,10 @@ class JarvisLogger:
         
         data_limite = datetime.now() - timedelta(days=dias)
         
-        for arquivo_log in self.pasta_logs.glob("jarvis_*.log"):
+        for arquivo_log in self.pasta_logs.glob("apex_*.log"):
             try:
                 # Extrai data do nome do arquivo
-                nome = arquivo_log.stem  # jarvis_2024-02-16
+                nome = arquivo_log.stem  # apex_2024-02-16
                 data_str = nome.split("_")[1]
                 data_arquivo = datetime.strptime(data_str, "%Y-%m-%d")
                 
@@ -128,11 +128,11 @@ class JarvisLogger:
 # Singleton global para fácil acesso
 _logger_instance = None
 
-def get_logger(nome_modulo="jarvis"):
+def get_logger(nome_modulo="apex"):
     """Retorna instância única do logger"""
     global _logger_instance
     if _logger_instance is None:
-        _logger_instance = JarvisLogger(nome_modulo)
+        _logger_instance = ApexLogger(nome_modulo)
     return _logger_instance
 
 # Testes

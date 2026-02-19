@@ -1,6 +1,6 @@
 import time
-from brain import JarvisBrain
-from correio import JarvisEmail
+from brain import ApexBrain
+from correio import ApexEmail
 from config import Config
 
 def gerar_relatorio_semanal():
@@ -10,7 +10,7 @@ def gerar_relatorio_semanal():
 
     # 1. ACORDAR O CÉREBRO
     try:
-        brain = JarvisBrain()
+        brain = ApexBrain()
         print("🧠 Cérebro conectado. Analisando projetos...")
     except Exception as e:
         print(f"❌ Erro ao iniciar Brain: {e}")
@@ -34,7 +34,7 @@ def gerar_relatorio_semanal():
 
     # 3. ENVIAR O E-MAIL
     try:
-        carteiro = JarvisEmail()
+        carteiro = ApexEmail()
         assunto = "📊 Briefing Semanal: Projetos Animati"
         
         # Envia para o e-mail padrão definido no config.py

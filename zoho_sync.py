@@ -89,12 +89,21 @@ class ZohoSync:
             tasks_endpoint = f"/projects/{proj_id}/tasks/"
             all_tasks = self.get_paginated_data(tasks_endpoint, "tasks")
             
+            # --- NOVO: Achatar os Custom Fields para facilitar a leitura da IA ---
+            raw_custom_fields = proj.get("custom_fields", [])
+            custom_fields_dict = {}
+            if isinstance(raw_custom_fields, list):
+                for field in raw_custom_fields:
+                    if isinstance(field, dict):
+                        for key, val in field.items():
+                            custom_fields_dict[key] = val
+            
             project_data = {
                 "id": proj_id,
                 "name": proj_name,
                 "status": proj.get("custom_status_name", "Ativo"),
-                # Busca 'project_percent' primeiro, se não achar tenta 'percent_complete', senão 0
-                "percent_complete": proj.get("project_percent", proj.get("percent_complete", 0)), 
+                "percent_complete": proj.get("project_percent", proj.get("percent_complete", 0)),
+                "custom_fields": custom_fields_dict, # <--- CAMPOS CUSTOMIZADOS ADICIONADOS AQUI
                 "tasks": []
             }
             

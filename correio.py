@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from config import Config
 
-class JarvisEmail:
+class ApexEmail:
     def __init__(self):
         self.remetente = Config.GMAIL_USER
         self.senha = Config.GMAIL_PASS
@@ -19,7 +19,7 @@ class JarvisEmail:
 
         # Estrutura do E-mail
         msg = MIMEMultipart()
-        msg['From'] = f"Jarvis Assistant <{self.remetente}>"
+        msg['From'] = f"Apex Assistant <{self.remetente}>"
         msg['To'] = destinatario
         msg['Subject'] = f"🤖 {assunto}"
 
@@ -29,12 +29,12 @@ class JarvisEmail:
         <html>
         <body style="font-family: Arial, sans-serif; color: #333;">
             <div style="background-color: #f4f4f4; padding: 20px; border-radius: 10px;">
-                <h2 style="color: #2c3e50;">Relatório Jarvis</h2>
+                <h2 style="color: #2c3e50;">Relatório Apex</h2>
                 <div style="background-color: white; padding: 20px; border-radius: 5px; border-left: 5px solid #3498db;">
                     {corpo_html}
                 </div>
                 <p style="font-size: 12px; color: #7f8c8d; margin-top: 20px;">
-                    Enviado automaticamente pelo Sistema Jarvis.<br>
+                    Enviado automaticamente pelo Sistema Apex.<br>
                     Gestão de Projetos Animati.
                 </p>
             </div>
@@ -61,9 +61,9 @@ class JarvisEmail:
 # --- TESTE UNITÁRIO ---
 if __name__ == "__main__":
     # Teste rápido para ver se a senha funciona
-    carteiro = JarvisEmail()
+    carteiro = ApexEmail()
     carteiro.enviar_email(
         Config.GMAIL_DESTINO_PADRAO,
-        "Teste de Conexão Jarvis", 
+        "Teste de Conexão Apex", 
         "<p>Olá Giovani, este é um teste de <b>envio HTML</b> do sistema.</p>"
     )

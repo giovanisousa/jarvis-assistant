@@ -1,8 +1,8 @@
 import json
 import time
 from datetime import datetime, timedelta
-from brain import JarvisBrain
-from correio import JarvisEmail
+from brain import ApexBrain
+from correio import ApexEmail
 from tracker import obter_comparativo
 from config import Config
 
@@ -102,19 +102,19 @@ def gerar_relatorio_cobranca():
     
     # Retry simples caso ainda dê erro (mas é improvável agora)
     try:
-        brain = JarvisBrain()
+        brain = ApexBrain()
         corpo_email = brain.analisar(prompt)
     except Exception as e:
         print(f"⚠️ Erro na IA: {e}. Tentando novamente em 5s...")
         time.sleep(5)
-        brain = JarvisBrain()
+        brain = ApexBrain()
         corpo_email = brain.analisar(prompt)
 
     # Limpeza HTML
     corpo_email_html = corpo_email.replace("```html", "").replace("```", "")
 
     # 5. Enviar
-    carteiro = JarvisEmail()
+    carteiro = ApexEmail()
     carteiro.enviar_email(Config.GMAIL_DESTINO_PADRAO, "⚠️ Relatório de Cobrança Semanal", corpo_email_html)
 
 if __name__ == "__main__":

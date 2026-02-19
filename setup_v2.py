@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-🤖 JARVIS V2 - INSTALADOR E CONFIGURADOR
+🤖 APEX V2 - INSTALADOR E CONFIGURADOR
 Script para configurar e testar a versão melhorada do assistente
 """
 
@@ -10,7 +10,7 @@ from pathlib import Path
 
 def banner():
     print("="*70)
-    print("   🤖 JARVIS V2 - ASSISTENTE EXECUTIVO CONVERSACIONAL")
+    print("   🤖 APEX V2 - ASSISTENTE EXECUTIVO CONVERSACIONAL")
     print("   Instalador e Configurador Automático")
     print("="*70)
     print()
@@ -99,7 +99,7 @@ def verificar_configuracao():
 
 def criar_env_template():
     """Cria um template do arquivo .env"""
-    template = """# Configurações do JARVIS
+    template = """# Configurações do APEX
 # Preencha os valores e remova os comentários
 
 # === GEMINI API (OBRIGATÓRIO) ===
@@ -129,8 +129,8 @@ USER_NAME=Giovani
     print()
 
 def ativar_versao_v2():
-    """Ativa a versão V2 do Jarvis"""
-    print("🔄 Ativando JARVIS V2...")
+    """Ativa a versão V2 do Apex"""
+    print("🔄 Ativando APEX V2...")
     
     # Cria backup dos originais
     if os.path.exists('brain.py'):
@@ -158,7 +158,7 @@ def ativar_versao_v2():
         print("   ❌ main_v2.py não encontrado!")
         return False
     
-    print("   🚀 JARVIS V2 ativado com sucesso!")
+    print("   🚀 APEX V2 ativado com sucesso!")
     print()
     return True
 
@@ -182,9 +182,9 @@ def testar_voz():
     print("🎤 Testando sistema de voz...")
     
     try:
-        from voz import JarvisVoz
+        from voz import ApexVoz
         
-        voz = JarvisVoz()
+        voz = ApexVoz()
         print("   🔊 Teste de síntese de voz...")
         voz.falar("Sistema de voz funcionando perfeitamente.")
         print("   ✅ TTS ok")
@@ -216,10 +216,10 @@ def menu_principal():
         print("="*70)
         print("   1. Verificar dependências")
         print("   2. Verificar configuração (.env)")
-        print("   3. Ativar JARVIS V2")
+        print("   3. Ativar APEX V2")
         print("   4. Restaurar versão original")
         print("   5. Testar sistema de voz")
-        print("   6. Executar JARVIS")
+        print("   6. Executar APEX")
         print("   7. Ver documentação")
         print("   0. Sair")
         print("="*70)
@@ -237,7 +237,7 @@ def menu_principal():
         elif opcao == '5':
             testar_voz()
         elif opcao == '6':
-            executar_jarvis()
+            executar_apex()
         elif opcao == '7':
             mostrar_documentacao()
         elif opcao == '0':
@@ -248,9 +248,9 @@ def menu_principal():
         
         input("\nPressione ENTER para continuar...")
 
-def executar_jarvis():
-    """Executa o Jarvis"""
-    print("\n🚀 Iniciando JARVIS...")
+def executar_apex():
+    """Executa o Apex"""
+    print("\n🚀 Iniciando APEX...")
     print("="*70)
     
     if not verificar_configuracao():
@@ -278,7 +278,7 @@ def mostrar_documentacao():
 def main():
     banner()
     
-    print("🎯 BEM-VINDO AO INSTALADOR DO JARVIS V2!\n")
+    print("🎯 BEM-VINDO AO INSTALADOR DO APEX V2!\n")
     print("Este assistente vai ajudá-lo a configurar e testar o sistema.\n")
     
     # Verificação inicial rápida
@@ -287,13 +287,13 @@ def main():
     
     if deps_ok and config_ok:
         print("✅ Sistema pronto para uso!\n")
-        iniciar = input("Deseja ativar o JARVIS V2 agora? (s/n): ").lower()
+        iniciar = input("Deseja ativar o APEX V2 agora? (s/n): ").lower()
         
         if iniciar == 's':
             if ativar_versao_v2():
-                rodar = input("\nDeseja executar o JARVIS agora? (s/n): ").lower()
+                rodar = input("\nDeseja executar o APEX agora? (s/n): ").lower()
                 if rodar == 's':
-                    executar_jarvis()
+                    executar_apex()
                     return
     
     # Menu interativo

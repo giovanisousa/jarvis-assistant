@@ -1,8 +1,8 @@
-# 📋 GUIA DO SISTEMA DE LOGGING - JARVIS
+# 📋 GUIA DO SISTEMA DE LOGGING - APEX
 
 ## 🎯 VISÃO GERAL
 
-O sistema de logging captura **TODOS** os eventos, erros e ações do Jarvis, permitindo debug fácil e rastreamento completo.
+O sistema de logging captura **TODOS** os eventos, erros e ações do Apex, permitindo debug fácil e rastreamento completo.
 
 ---
 
@@ -25,10 +25,10 @@ Pasta `logs/` será criada automaticamente com:
 
 ```
 logs/
-├── jarvis_2026-02-16.log    # Log completo do dia (DEBUG+)
+├── apex_2026-02-16.log    # Log completo do dia (DEBUG+)
 ├── erros.log                # Apenas erros e warnings
 ├── acoes.log                # Ações executadas (emails, whatsapp, etc)
-└── jarvis_2026-02-15.log    # Logs de dias anteriores
+└── apex_2026-02-15.log    # Logs de dias anteriores
 ```
 
 ---
@@ -50,10 +50,10 @@ cp brain_v2_logged.py brain_v2.py
 Edite seu `main_v2.py` ou `app_v2.py`:
 ```python
 # Trocar esta linha:
-from brain_v2 import JarvisBrain
+from brain_v2 import ApexBrain
 
 # Por esta:
-from brain_v2_logged import JarvisBrain
+from brain_v2_logged import ApexBrain
 ```
 
 ---
@@ -65,7 +65,7 @@ from brain_v2_logged import JarvisBrain
 2026-02-16 14:30:15 | DEBUG | brain_v2 | analisar:252 | Roteando pergunta: qual situação rivelare
 ```
 - Usado para: rastreamento detalhado do fluxo
-- Só aparece em: `jarvis_YYYY-MM-DD.log`
+- Só aparece em: `apex_YYYY-MM-DD.log`
 
 ### **🟢 INFO** - Eventos normais
 ```
@@ -106,8 +106,8 @@ python view_logs.py
 
 **Menu:**
 ```
-  1. jarvis_2026-02-16.log  |  125.3 KB | 16/02 14:30
-  2. jarvis_2026-02-15.log  |   89.1 KB | 15/02 18:20
+  1. apex_2026-02-16.log  |  125.3 KB | 16/02 14:30
+  2. apex_2026-02-15.log  |   89.1 KB | 15/02 18:20
   3. erros.log              |   12.4 KB | 16/02 14:25
 
 Opções:
@@ -128,12 +128,12 @@ tail -n 50 logs/erros.log
 
 **Ver log de hoje:**
 ```bash
-cat logs/jarvis_$(date +%Y-%m-%d).log
+cat logs/apex_$(date +%Y-%m-%d).log
 ```
 
 **Buscar termo específico:**
 ```bash
-grep "Rivelare" logs/jarvis_*.log
+grep "Rivelare" logs/apex_*.log
 ```
 
 **Ver ações executadas:**
@@ -145,7 +145,7 @@ cat logs/acoes.log
 
 ## 🐛 DEBUGANDO ERROS
 
-### **Cenário 1: "Jarvis não responde a perguntas sobre projeto"**
+### **Cenário 1: "Apex não responde a perguntas sobre projeto"**
 
 1. **Veja o log de hoje:**
    ```bash
@@ -182,11 +182,11 @@ cat logs/acoes.log
    ```
    **Solução:** Senha de app inválida
 
-### **Cenário 3: "Jarvis trava ao processar"**
+### **Cenário 3: "Apex trava ao processar"**
 
 1. **Veja último log:**
    ```bash
-   tail -100 logs/jarvis_$(date +%Y-%m-%d).log
+   tail -100 logs/apex_$(date +%Y-%m-%d).log
    ```
 
 2. **Procure pela última linha:**
@@ -220,12 +220,12 @@ python view_logs.py
 
 Conte quantas chamadas à API:
 ```bash
-grep "Chamando Gemini API" logs/jarvis_*.log | wc -l
+grep "Chamando Gemini API" logs/apex_*.log | wc -l
 ```
 
 Veja tempo de resposta (logs DEBUG):
 ```bash
-grep "Resposta recebida" logs/jarvis_*.log
+grep "Resposta recebida" logs/apex_*.log
 ```
 
 ### **Auditoria de Ações**
@@ -257,9 +257,9 @@ python view_logs.py
 ### **Rotação de Logs**
 
 Logs são organizados por dia automaticamente:
-- `jarvis_2026-02-16.log` ← hoje
-- `jarvis_2026-02-15.log` ← ontem
-- `jarvis_2026-02-14.log` ← 2 dias atrás
+- `apex_2026-02-16.log` ← hoje
+- `apex_2026-02-15.log` ← ontem
+- `apex_2026-02-14.log` ← 2 dias atrás
 
 Arquivo `erros.log` e `acoes.log` são cumulativos.
 
@@ -269,12 +269,12 @@ Arquivo `erros.log` e `acoes.log` são cumulativos.
 
 ### **1. Filtrar por Hora**
 ```bash
-grep "14:30" logs/jarvis_2026-02-16.log
+grep "14:30" logs/apex_2026-02-16.log
 ```
 
 ### **2. Ver apenas chamadas à API**
 ```bash
-grep "Gemini API" logs/jarvis_*.log
+grep "Gemini API" logs/apex_*.log
 ```
 
 ### **3. Exportar erros para análise**
@@ -284,7 +284,7 @@ grep "ERROR" logs/erros.log > analise_erros.txt
 
 ### **4. Monitorar em tempo real**
 ```bash
-tail -f logs/jarvis_$(date +%Y-%m-%d).log
+tail -f logs/apex_$(date +%Y-%m-%d).log
 ```
 
 ### **5. Contar tipos de erro**
@@ -332,7 +332,7 @@ Volte para `brain_v2.py` sem logging.
 ## 📞 TROUBLESHOOTING
 
 ### **"Pasta logs/ não é criada"**
-- Execute o Jarvis uma vez
+- Execute o Apex uma vez
 - A pasta é criada automaticamente
 
 ### **"Logs muito grandes"**
@@ -351,10 +351,10 @@ Volte para `brain_v2.py` sem logging.
 - [x] Copiar `brain_v2_logged.py` para pasta do projeto
 - [x] Copiar `view_logs.py` para pasta do projeto
 - [ ] Ativar brain com logging (renomear ou importar)
-- [ ] Executar Jarvis uma vez
+- [ ] Executar Apex uma vez
 - [ ] Verificar se pasta `logs/` foi criada
 - [ ] Executar `python view_logs.py` para testar
-- [ ] Fazer uma pergunta ao Jarvis
+- [ ] Fazer uma pergunta ao Apex
 - [ ] Ver log no visualizador
 
 ---
@@ -364,7 +364,7 @@ Volte para `brain_v2.py` sem logging.
 ### **Exemplo 1: Debug de pergunta que falha**
 
 ```bash
-# 1. Pergunte ao Jarvis: "Qual situação do Rivelare?"
+# 1. Pergunte ao Apex: "Qual situação do Rivelare?"
 # (supondo que deu erro)
 
 # 2. Ver o que aconteceu:

@@ -1,10 +1,10 @@
-# 🤖 JARVIS - Assistente Executivo Conversacional V2
+# 🤖 APEX - Assistente Executivo Conversacional V2
 
 ![Status](https://img.shields.io/badge/Status-Pronto-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Assistente de voz inteligente inspirado no Jarvis do Homem de Ferro, com controle por voz, automação de tarefas e integração com projetos Zoho.
+Assistente de voz inteligente inspirado no Apex do Homem de Ferro, com controle por voz, automação de tarefas e integração com projetos Zoho.
 
 ---
 
@@ -38,8 +38,8 @@ Assistente de voz inteligente inspirado no Jarvis do Homem de Ferro, com control
 
 ### **Passo 1: Clonar/Baixar o Projeto**
 ```bash
-git clone https://github.com/seu-usuario/jarvis-assistant.git
-cd jarvis-assistant
+git clone https://github.com/seu-usuario/apex-assistant.git
+cd apex-assistant
 ```
 
 ### **Passo 2: Instalar Dependências**
@@ -123,23 +123,23 @@ python main.py
 
 1. **Ativação**
    ```
-   VOCÊ: "Jarvis"
-   JARVIS: "Sim, senhor? Como posso ajudar?"
+   VOCÊ: "Apex"
+   APEX: "Sim, senhor? Como posso ajudar?"
    ```
 
 2. **Modo Contínuo (60s)**
    ```
    VOCÊ: "Qual a situação do projeto Rivelare?"
-   JARVIS: [responde]
+   APEX: [responde]
    
-   VOCÊ: "E o cronograma?" ← não precisa dizer "Jarvis"
-   JARVIS: [responde sobre Rivelare]
+   VOCÊ: "E o cronograma?" ← não precisa dizer "Apex"
+   APEX: [responde sobre Rivelare]
    ```
 
 3. **Comandos de Ação**
    ```
    VOCÊ: "Manda email pro João atualizando ele"
-   JARVIS: [envia email automaticamente]
+   APEX: [envia email automaticamente]
    ```
 
 ### **Exemplos de Comandos**
@@ -194,7 +194,7 @@ python main.py
 # Timeout de sessão (segundos)
 SESSAO_TIMEOUT = 60
 
-# Modo contínuo (não precisa repetir "Jarvis")
+# Modo contínuo (não precisa repetir "Apex")
 MODO_CONTINUO = True  # True/False
 ```
 
@@ -215,7 +215,7 @@ self.model_name = "gemini-2.0-flash-exp"
 ## 📁 ESTRUTURA DO PROJETO
 
 ```
-jarvis-assistant/
+apex-assistant/
 │
 ├── brain_v2.py          # Cérebro melhorado (memória + contexto)
 ├── main_v2.py           # Interface melhorada (modo contínuo)
@@ -327,13 +327,13 @@ Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalh
 
 - Google Gemini pela API de IA
 - Comunidade Python
-- Inspiração: Jarvis (Homem de Ferro - Marvel)
+- Inspiração: Apex (Homem de Ferro - Marvel)
 
 ---
 
 ## 📞 SUPORTE
 
-- **Issues**: [GitHub Issues](https://github.com/seu-usuario/jarvis-assistant/issues)
+- **Issues**: [GitHub Issues](https://github.com/seu-usuario/apex-assistant/issues)
 - **Documentação**: Veja `GUIA_V2.md`
 - **Email**: seu-email@exemplo.com
 

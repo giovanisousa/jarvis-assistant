@@ -8,17 +8,17 @@ from datetime import datetime
 
 # Importa a versão V2 do cérebro
 try:
-    from brain_v2 import JarvisBrain
+    from brain_v2 import ApexBrain
     VERSAO_BRAIN = "V2"
 except ImportError:
-    from brain import JarvisBrain
+    from brain import ApexBrain
     VERSAO_BRAIN = "V1"
 
-from voz import JarvisVoz
+from voz import ApexVoz
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
 st.set_page_config(
-    page_title="Jarvis Dashboard V2 - Animati",
+    page_title="Apex Dashboard V2 - Animati",
     page_icon="🤖",
     layout="wide",
 )
@@ -86,7 +86,7 @@ st.markdown(f'<div class="version-badge">BRAIN {VERSAO_BRAIN}</div>', unsafe_all
 
 # --- INICIALIZAÇÃO DO SESSION STATE ---
 if 'brain' not in st.session_state:
-    st.session_state['brain'] = JarvisBrain()
+    st.session_state['brain'] = ApexBrain()
     st.session_state['historico_chat'] = []
     st.session_state['modo_voz'] = False
 
@@ -142,7 +142,7 @@ def processar_comando_texto(comando):
 
 def processar_comando_voz():
     """Processa comando por voz"""
-    voz = JarvisVoz()
+    voz = ApexVoz()
     brain = st.session_state['brain']
     
     with st.spinner('🎤 Ouvindo...'):
@@ -179,7 +179,7 @@ df = pd.DataFrame(dados)
 memoria = carregar_memoria()
 
 # --- LAYOUT PRINCIPAL ---
-st.title("🤖 JARVIS DASHBOARD V2 - CENTRAL DE PROJETOS")
+st.title("🤖 APEX DASHBOARD V2 - CENTRAL DE PROJETOS")
 
 # --- TABS PRINCIPAIS ---
 tab1, tab2, tab3, tab4 = st.tabs(["📊 Dashboard", "💬 Conversa", "📝 Memórias", "⚙️ Configurações"])
@@ -276,7 +276,7 @@ with tab1:
 
 # ========== TAB 2: CONVERSA ==========
 with tab2:
-    st.subheader("💬 Conversa com o Jarvis")
+    st.subheader("💬 Conversa com o Apex")
     
     # Modo de entrada
     modo_col1, modo_col2 = st.columns([1, 4])
@@ -299,7 +299,7 @@ with tab2:
             else:
                 st.markdown(f"""
                 <div class="chat-message assistant-message">
-                    <strong>🤖 JARVIS [{msg['timestamp']}]:</strong><br>
+                    <strong>🤖 APEX [{msg['timestamp']}]:</strong><br>
                     {msg['content']}
                 </div>
                 """, unsafe_allow_html=True)
@@ -386,7 +386,7 @@ with tab4:
             st.success("Cache limpo!")
         
         if st.button("🔌 Reiniciar Brain"):
-            st.session_state['brain'] = JarvisBrain()
+            st.session_state['brain'] = ApexBrain()
             st.success("Brain reiniciado!")
     
     st.markdown("---")
@@ -416,11 +416,11 @@ with tab4:
 with st.sidebar:
     # Logo/Imagem
     if os.path.exists("robot.png"):
-        st.image("robot.png", width=200)
+        st.image("iron.gif", width=400)
     elif os.path.exists("/mnt/user-data/uploads/robot.png"):
         st.image("/mnt/user-data/uploads/robot.png", width=200)
     
-    st.markdown(f'<h2 style="text-align:center;">JARVIS CORE {VERSAO_BRAIN}</h2>', unsafe_allow_html=True)
+    st.markdown(f'<h2 style="text-align:center;">APEX CORE {VERSAO_BRAIN}</h2>', unsafe_allow_html=True)
     st.markdown("---")
     
     # Status do sistema

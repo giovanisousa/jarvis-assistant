@@ -11,16 +11,16 @@ from google import genai
 from google.genai import types
 from config import Config
 from datetime import datetime
-from ferramentas import JarvisFerramentas
+from ferramentas import ApexFerramentas
 from logger import get_logger
 
 # Inicializa logger
 log = get_logger("brain_v2")
 
-class JarvisBrain:
+class ApexBrain:
     def __init__(self):
         log.info("="*70)
-        log.info("INICIALIZANDO JARVIS BRAIN V2")
+        log.info("INICIALIZANDO APEX BRAIN V2")
         log.info("="*70)
         
         try:
@@ -49,7 +49,7 @@ class JarvisBrain:
             
             # Inicializa as "Ferramentas"
             log.debug("Inicializando módulo de ferramentas...")
-            self.ferramentas = JarvisFerramentas()
+            self.ferramentas = ApexFerramentas()
             log.info("✅ Ferramentas (email, whatsapp, automação) prontas")
             
             # Histórico de Conversa (Memória de Curto Prazo)
@@ -74,7 +74,7 @@ class JarvisBrain:
         """Constrói a instrução de sistema para a IA"""
         log.debug("Construindo prompt de instrução do sistema...")
         
-        return f"""Você é JARVIS, o assistente executivo pessoal do Giovani na Animati.
+        return f"""Você é APEX, o assistente executivo pessoal do Giovani na Animati.
 Data/Hora atual: {data_hoje}
 
 # PERSONALIDADE E TOM
@@ -207,7 +207,7 @@ Se o usuário disser "anote que...", "lembre que...", "registre que...":
             ultimas_msg = self.historico_conversa[-6:]  # Últimas 3 interações
             
             for msg in ultimas_msg:
-                role_label = "GIOVANI" if msg["role"] == "user" else "JARVIS"
+                role_label = "GIOVANI" if msg["role"] == "user" else "APEX"
                 contexto += f"[{msg['timestamp']}] {role_label}: {msg['content'][:200]}\n"
             
             contexto += "--- FIM DO HISTÓRICO ---\n\n"
@@ -301,7 +301,7 @@ Se o usuário disser "anote que...", "lembre que...", "registre que...":
 
             # Busca por palavras-chave
             palavras_ignoradas = ['anote', 'que', 'sobre', 'projeto', 'no', 'na', 'o', 'a', 'para', 
-                                  'fase', 'status', 'jarvis', 'situacao', 'situação', 'clique', 
+                                  'fase', 'status', 'apex', 'situacao', 'situação', 'clique', 
                                   'mande', 'leia', 'email', 'whatsapp', 'mensagem']
             termos = [p for p in pergunta_limpa.split() if len(p) > 3 and p not in palavras_ignoradas]
             

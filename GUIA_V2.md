@@ -1,4 +1,4 @@
-# 🤖 JARVIS V2 - SISTEMA DE ASSISTENTE CONVERSACIONAL
+# 🤖 APEX V2 - SISTEMA DE ASSISTENTE CONVERSACIONAL
 
 ## 🎯 MELHORIAS IMPLEMENTADAS
 
@@ -9,8 +9,8 @@
 - ✅ Tom mais natural e menos robótico
 
 ### 2. **MODO CONTÍNUO DE CONVERSA**
-- ✅ Você diz "JARVIS" uma vez e ele fica ativo por 60 segundos
-- ✅ Durante esse tempo, pode conversar normalmente sem repetir "Jarvis"
+- ✅ Você diz "APEX" uma vez e ele fica ativo por 60 segundos
+- ✅ Durante esse tempo, pode conversar normalmente sem repetir "Apex"
 - ✅ Timer renovado automaticamente a cada interação
 - ✅ Indicador visual do tempo restante de sessão
 
@@ -37,20 +37,20 @@
 
 ### **Ativação Inicial**
 ```
-VOCÊ: "Jarvis"
-JARVIS: "Sim, senhor? Como posso ajudar?"
+VOCÊ: "Apex"
+APEX: "Sim, senhor? Como posso ajudar?"
 ```
 
 ### **Conversas Naturais (Modo Contínuo)**
 ```
-VOCÊ: "Jarvis, qual a situação do projeto 1236?"
-JARVIS: [responde]
+VOCÊ: "Apex, qual a situação do projeto 1236?"
+APEX: [responde]
 
-VOCÊ: "E o 1237?" ← não precisa dizer "Jarvis" de novo
-JARVIS: [responde considerando contexto]
+VOCÊ: "E o 1237?" ← não precisa dizer "Apex" de novo
+APEX: [responde considerando contexto]
 
 VOCÊ: "Manda um email pro cliente avisando"
-JARVIS: [executa ação de email]
+APEX: [executa ação de email]
 ```
 
 ### **Exemplos de Comandos**
@@ -105,7 +105,7 @@ JARVIS: [executa ação de email]
 # Timeout de sessão (em segundos)
 SESSAO_TIMEOUT = 60  # Padrão: 60s
 
-# Modo contínuo (não precisa repetir "Jarvis")
+# Modo contínuo (não precisa repetir "Apex")
 MODO_CONTINUO = True  # True = ativo | False = wake word sempre
 ```
 
@@ -164,9 +164,9 @@ python main_v2.py
 
 ## 🐛 TROUBLESHOOTING
 
-### **Problema: "Jarvis não responde"**
+### **Problema: "Apex não responde"**
 ✅ Verifique se o microfone está funcionando
-✅ Fale "JARVIS" claramente para ativar
+✅ Fale "APEX" claramente para ativar
 ✅ Aguarde o indicador "🟢 ATIVO"
 
 ### **Problema: "Ele não entende comandos de ação"**
@@ -190,16 +190,16 @@ python main_v2.py
 ### **1. Aproveite o Contexto**
 ```
 VOCÊ: "Qual a situação do Rivelare?"
-JARVIS: [explica]
+APEX: [explica]
 
 VOCÊ: "E quanto ao cronograma?" ← ele sabe que é do Rivelare
-JARVIS: [responde sobre cronograma do Rivelare]
+APEX: [responde sobre cronograma do Rivelare]
 ```
 
 ### **2. Combine Consulta + Ação**
 ```
 VOCÊ: "Verifica o status do projeto 1236 e manda email pro cliente"
-JARVIS: [analisa projeto] + [envia email automaticamente]
+APEX: [analisa projeto] + [envia email automaticamente]
 ```
 
 ### **3. Use Anotações como Memória**
@@ -207,7 +207,7 @@ JARVIS: [analisa projeto] + [envia email automaticamente]
 VOCÊ: "Anote que o cliente do Rivelare está insatisfeito com prazo"
 [Semana depois]
 VOCÊ: "Qual a situação do Rivelare?"
-JARVIS: "... além disso, você anotou que cliente está insatisfeito..."
+APEX: "... além disso, você anotou que cliente está insatisfeito..."
 ```
 
 ### **4. Limpe o Histórico em Mudanças de Contexto**
@@ -237,7 +237,7 @@ VOCÊ: "Agora me fala dos projetos do RJ" ← conversa fresca
 
 ## 🚀 PRÓXIMOS PASSOS (Sugestões)
 
-1. **Integração com Calendário** → "Jarvis, marca reunião amanhã às 14h"
+1. **Integração com Calendário** → "Apex, marca reunião amanhã às 14h"
 2. **Lembretes Proativos** → Ele avisa quando projeto está atrasando
 3. **Comandos por Gestos** → Controle com webcam
 4. **Interface Gráfica** → Dashboard visual estilo Homem de Ferro
